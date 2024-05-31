@@ -1,7 +1,7 @@
-import random
 from typing import Optional, Dict, List
 
 from pypi_org.db import fake_data
+import secrets
 
 
 def get_page(base_url: str) -> Optional[Dict]:
@@ -53,7 +53,7 @@ def create_redirect(name: str, short_url: str, url: str):
         raise Exception("Cannot create redirect, exists!")
 
     data = {
-        'id': random.randint(100, 1000000),
+        'id': secrets.SystemRandom().randint(100, 1000000),
         'url': url,
         'short_url': short_url,
         'name': name,
@@ -82,7 +82,7 @@ def create_page(title, url, contents):
         raise Exception("Cannot create page, exists!")
 
     data = {
-        'id': random.randint(100, 1000000),
+        'id': secrets.SystemRandom().randint(100, 1000000),
         'url': url,
         'title': title,
         'contents': contents,
