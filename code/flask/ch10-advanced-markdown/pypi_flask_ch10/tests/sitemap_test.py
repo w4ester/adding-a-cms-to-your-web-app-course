@@ -1,14 +1,14 @@
-import xml.etree.ElementTree
 
 from flask import Response
 
 # noinspection PyUnresolvedReferences
 from tests.test_client import client
+import defusedxml.ElementTree
 
 
 def test_int_site_mapped_urls(client):
     text = get_sitemap_text(client)
-    x = xml.etree.ElementTree.fromstring(text)
+    x = defusedxml.ElementTree.fromstring(text)
     urls = [
         href.text.strip().replace('http://127.0.0.1:5000', '').replace('http://localhost', '')
         for href in list(x.findall('url/loc'))
