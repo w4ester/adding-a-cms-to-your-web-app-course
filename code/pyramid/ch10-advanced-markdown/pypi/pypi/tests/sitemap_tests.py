@@ -1,5 +1,5 @@
-import xml.etree.ElementTree
 from unittest import TestCase
+import defusedxml.ElementTree
 
 
 class SitemapWebTests(TestCase):
@@ -37,7 +37,7 @@ class SitemapWebTests(TestCase):
 
     def test_site_mapped_urls(self):
         text = self.get_sitemap_text()
-        x = xml.etree.ElementTree.fromstring(text)
+        x = defusedxml.ElementTree.fromstring(text)
         urls = [
             href.text.strip().replace('http://localhost:6552', '')
             for href in list(x.findall('url/loc'))

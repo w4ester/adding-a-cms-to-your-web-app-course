@@ -8,3 +8,4 @@ pyramid_debugtoolbar
 markdown2
 sqlalchemy
 waitress
+defusedxml==0.7.1
