@@ -1,7 +1,7 @@
-import random
 from typing import List
 
 from pypi.db import fake_data
+import secrets
 
 
 def get_page(url: str) -> dict:
@@ -94,7 +94,7 @@ def update_page(page_id, title, url, contents):
 
 def create_page(title, url, contents):
     data = {
-        'id': random.randint(5, 10000),
+        'id': secrets.SystemRandom().randint(5, 10000),
         'url': url,
         'title': title,
         'contents': contents,
